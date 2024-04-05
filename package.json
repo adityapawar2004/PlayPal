@@ -45,6 +45,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-radial-menu": "^1.0.0",
-    "systeminformation": "^5.22.7"
+    "systeminformation": "^5.22.7",
+    "screenshot-desktop": "^1.15.0"
   }
 }

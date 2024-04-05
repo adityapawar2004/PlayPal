@@ -1,8 +1,16 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('node:path');
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  desktopCapturer,
+  dialog,
+} = require("electron");
+const path = require("node:path");
+const fs = require("fs");
+const captureScreen = require("./functions/captureScreenShot");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
@@ -18,6 +26,8 @@ const createWindow = () => {
 
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      contextIsolation: true, // It's important for security reasons
+      enableRemoteModule: false, // It's recommended to keep this disabled for security reasons
     },
     // frame:false,
     // autoHideMenuBar:true,
@@ -43,10 +53,12 @@ app.whenReady().then(() => {
   });
 });
 
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
+ipcMain.handle("capture-screen", captureScreen);
+
+// Add additional main process code here, or in separate files
