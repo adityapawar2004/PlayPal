@@ -7,7 +7,7 @@ const {
 } = require("electron");
 const path = require("node:path");
 const fs = require("fs");
-const captureScreen = require("./functions/captureScreenShot");
+const captureScreen = require("./backend/captureScreenShot");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
