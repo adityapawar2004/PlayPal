@@ -22,7 +22,7 @@ The Game Companion App is a tool designed to enhance your gaming experience by p
 
 ## How It Works
 
-1. **Upload Screenshots**: Capture screenshots during your gameplay and upload them to the app.
+1. **Upload Screenshots**: App Captures the screenshots on clicking the pop-up overlay during your gameplay and upload them to the app.
 
 2. **Analysis**: The app analyzes the screenshots to understand your current game state and progress.
 
