@@ -14,16 +14,13 @@ body {
     height: 100%;
 }
 
-body {
-    background: #52be7f;
-    color: #fff;
-}
+
 
 .component {
     position: relative;
     margin-bottom: 3em;
     height: 15em;
-    background: rgba(0,0,0,0.05);
+ 
     font-family: 'Lato', Arial, sans-serif;
 }
 
@@ -85,6 +82,7 @@ body {
     transform: scale(0.1);
     pointer-events: none;
     overflow: hidden;
+    rotate: 90deg;
 }
 
 /*cover to prevent extra space of anchors from being clickable*/
@@ -115,6 +113,7 @@ body {
     -ms-transform: scale(1);
     transform: scale(1);
     pointer-events: auto;
+    
 }
 
 .csstransforms .cn-wrapper li {

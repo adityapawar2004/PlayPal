@@ -22,7 +22,7 @@ const Menu= () => {
     return (
       <div className="container csstransforms">
         <div className="component">
-          <h2>Hi</h2>
+        
           <button className="cn-button" onClick={toggleMenu} id="cn-button">Menu</button>
           <div className="cn-wrapper" id="cn-wrapper">
             <ul>
@@ -36,12 +36,7 @@ const Menu= () => {
               <li><a href="#"><span>Gift</span></a></li>
               <li><a href="#"><span>Clothes</span></a></li>
               <li><a href="#"><span>Games</span></a></li>
-              <li><a href="#"><span>Stationary</span></a></li>
-              <li><a href="#"><span>Toys</span></a></li>
-              <li><a href="#"><span>Books</span></a></li>
-              <li><a href="#"><span>Login</span></a></li>
-              <li><a href="#"><span>Register</span></a></li>
-              <li><a href="#"><span>Sell</span></a></li>
+             
             </ul>
           </div>
         </div>
