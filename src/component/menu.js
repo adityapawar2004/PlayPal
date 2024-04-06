@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdRecordVoiceOver } from "react-icons/md";
-import { FaCameraRetro } from "react-icons/fa";
+import { FaCameraRetro, FaSpinner } from "react-icons/fa";  // Import FaSpinner for the loading icon
 import { IoChatboxEllipses } from "react-icons/io5";
 import Chat from "./chat";
 
@@ -10,6 +10,7 @@ const Menu = () => {
   const [chat, setChat] = useState(false);
   const [showResponse, setShowResponse] = useState(false);
   const [aiResponse, setAiResponse] = useState("");
+  const [isLoading, setIsLoading] = useState(false);  // State to track loading
 
   const wrapper = document.getElementById("cn-wrapper");
 
@@ -25,15 +26,11 @@ const Menu = () => {
   }, [menuOpen]);
 
   const takeScreenshot = async () => {
+    setIsLoading(true);  // Start loading
     try {
       const response = await window.electron.captureScreen();
-      console.log(response);
       const GameName = localStorage.getItem("GameName");
-      const genAiResponse = await window.electron.genAiScreenshotOnly(
-        response,
-        GameName
-      );
-      console.log(genAiResponse);
+      const genAiResponse = await window.electron.genAiScreenshotOnly(response, GameName);
       setFilePath(response);
       setAiResponse(genAiResponse);
       setShowResponse(true); // Show the AI response box
@@ -43,6 +40,7 @@ const Menu = () => {
       setAiResponse("Failed to get AI response");
       setShowResponse(true);
     }
+    setIsLoading(false);  // End loading
   };
 
   return (
@@ -54,21 +52,9 @@ const Menu = () => {
         <div className="cn-wrapper" id="cn-wrapper">
           <ul>
             <li>
-              <a href="#">
-                <span>Home</span>
-              </a>
-            </li>
-            <li>
               <a href="#" onClick={takeScreenshot}>
                 <span>
-                  <FaCameraRetro />
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span>
-                  <FaCameraRetro />
+                  {isLoading ? <FaSpinner className="fa-spin" /> : <FaCameraRetro />}
                 </span>
               </a>
             </li>
