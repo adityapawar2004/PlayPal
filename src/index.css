@@ -51,10 +51,11 @@ body {
     border: none;
     border-radius: 50%;
     background: none;
-    background-color: #fff;
-    color: #52be7f;
+    background: rgba(5, 11, 57, 0.933);
+    color: #f2f2f2;
     text-align: center;
     font-weight: 700;
+    border: 3px solid hsl(141, 92%, 42%);
     font-size: 1.5em;
     text-transform: uppercase;
     cursor: pointer;
@@ -148,10 +149,11 @@ body {
     width: 14.5em;
     height: 14.5em;
     border-radius: 50%;
-    background: #429a67;
-    background: -webkit-radial-gradient(transparent 35%, #429a67 35%);
-    background: -moz-radial-gradient(transparent 35%, #429a67 35%);
-    background: radial-gradient(transparent 35%, #429a67 35%);
+    background: hsl(141, 92%, 42%);
+    background: -webkit-radial-gradient(transparent 35%, hsl(141, 92%, 42%));
+    background: -moz-radial-gradient(transparent 35%,hsl(141, 92%, 42%));
+    background: radial-gradient(transparent 35%, rgba(5, 11, 57, 0.933) 35%);
+    border: 5px solid hsl(141, 92%, 42%);
     color: #fff;
     text-align: center;
     text-decoration: none;
@@ -178,9 +180,9 @@ body {
 .csstransforms .cn-wrapper li a:hover,
 .csstransforms .cn-wrapper li a:active,
 .csstransforms .cn-wrapper li a:focus {
-    background: -webkit-radial-gradient(transparent 35%, #449e6a 35%);
-    background: -moz-radial-gradient(transparent 35%, #449e6a 35%);
-    background: radial-gradient(transparent 35%, #449e6a 35%);
+    background: -webkit-radial-gradient(transparent 35%, #ab2977 35%);
+    background: -moz-radial-gradient(transparent 35%, #ab2977 35%);
+    background: radial-gradient(transparent 35%, #ab2977 35%);
 }
 
 .csstransforms .opened-nav li {

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-
+import { MdRecordVoiceOver } from "react-icons/md";
+import { FaCameraRetro } from "react-icons/fa";
+import { IoChatboxEllipses } from "react-icons/io5";
 const Menu= () => {
     const[menuOpen, setMenuOpen] = useState(false);
     const wrapper = document.getElementById("cn-wrapper");
@@ -26,17 +28,10 @@ const Menu= () => {
           <button className="cn-button" onClick={toggleMenu} id="cn-button">Menu</button>
           <div className="cn-wrapper" id="cn-wrapper">
             <ul>
-              <li>
-                <a href="#">
-                  <span>Home</span>
-                </a>
-              </li>
-              <li><a href="#"><span>Furniture</span></a></li>
-              <li><a href="#"><span>Transport</span></a></li>
-              <li><a href="#"><span>Gift</span></a></li>
-              <li><a href="#"><span>Clothes</span></a></li>
-              <li><a href="#"><span>Games</span></a></li>
              
+              <li><a href="#"><span><FaCameraRetro /></span></a></li>
+              <li><a href="#"><span><IoChatboxEllipses /></span></a></li>
+              <li><a href="#"><span><MdRecordVoiceOver /></span></a></li>
             </ul>
           </div>
         </div>
