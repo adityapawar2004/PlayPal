@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdRecordVoiceOver } from "react-icons/md";
 import { FaCameraRetro } from "react-icons/fa";
 import { IoChatboxEllipses } from "react-icons/io5";
@@ -14,7 +14,7 @@ const Menu = () => {
   }
 
   useEffect(() => {
-    setChat(!chat)
+    // setChat(!chat)
     if (wrapper) {
       if (menuOpen) wrapper.classList.add("opened-nav");
       else wrapper.classList.remove("opened-nav");
