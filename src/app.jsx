@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import ScreenShot from "./component/ScreenShot";
+// import ScreenShot from "./component/ScreenShot";
 import Menu from "./component/menu";
 
 
@@ -28,7 +28,7 @@ function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
     console.log('Saved:', apiValue);
     setApiKey(apiValue);
     setIsApiSaved(true);
-    localStorage.setItem("GameName", apiValue);
+    localStorage.setItem("ApiKey", apiValue);
   };
  
 

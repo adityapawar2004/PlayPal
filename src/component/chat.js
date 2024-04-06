@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Menu from './menu';
 
 
-const Chat = () => {
+const Chat = ({setMenuOpen}) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
 
@@ -9,7 +10,9 @@ const Chat = () => {
     if (inputMessage.trim() !== '') {
       setMessages([...messages, { text: inputMessage, sender: 'user' }]);
       setInputMessage('');
+      // return the Menu component
     }
+    setMenuOpen(true);
   };
 
   return (
@@ -21,7 +24,7 @@ const Chat = () => {
           id="message"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
-          style={{ flex: 1, height:"100px",padding: "8px", borderRadius: "5px", border: "1px solid #ccc", marginRight: "10px" }}
+          style={{ flex: 1, width:"300px",height:"100px",padding: "8px", borderRadius: "5px", border: "1px solid #ccc", marginRight: "10px" }}
         />
         <button onClick={sendMessage} style={{height:"50px", padding: "8px 20px", borderRadius: "5px", backgroundColor: "hsl(141, 92%, 42%)", color: "white", border: "none", cursor: "pointer" }}>Send</button>
       </div>

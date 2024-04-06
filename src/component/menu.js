@@ -13,13 +13,8 @@ const Menu = () => {
     setMenuOpen(!menuOpen);
   }
 
-  React.useEffect(() => {
-    if(chat){
-      setMenuOpen(false);
-    }
-    else{
-      setMenuOpen(true);
-    }
+  useEffect(() => {
+    setChat(!chat)
     if (wrapper) {
       if (menuOpen) wrapper.classList.add("opened-nav");
       else wrapper.classList.remove("opened-nav");
@@ -82,7 +77,7 @@ const Menu = () => {
           </ul>
         </div>
         </div>
-      {chat && <Chat />}
+      {chat && <Chat setMenuOpen={setMenuOpen} />}
       </div>
     </div>
   );
