@@ -14,9 +14,6 @@ html {
    
 }
 
-.container {
-    -webkit-app-region: drag;
-}
 
 .component {
     position: relative;
@@ -346,15 +343,15 @@ html {
     position: relative;
     display: inline-block;
     height: 3rem;
-    width: 12rem;
+    width: 10rem;
     border: 1px solid transparent;
     padding: 0.75rem 1rem;
-    text-align: left;
+
     color: white;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 700;
-    background-color: #cbcbcb;
+    background-color:  hsl(141, 92%, 42%);
     border-radius: 0.5rem;
     overflow: hidden;
     text-decoration: underline;
@@ -362,45 +359,6 @@ html {
     transition-duration: 500ms;
    }
    
-   .custom-button:hover {
-    border-color: #f43f5e;
-    text-decoration: underline;
-    text-decoration:0.5rem ;
-    color: #f43f5e;
-   }
+
    
-   .custom-button:hover::before {
-    box-shadow: 20px 20px 20px 30px #a21caf;
-    right: 1.25rem;
-    bottom: -0.5rem;
-    filter: blur(10px);
-   }
-   
-   .custom-button::before,
-   .custom-button::after {
-    content: '';
-    position: absolute;
-    z-index: 10;
-    transition-duration: 500ms;
-   }
-   
-   .custom-button::before {
-    width: 3rem;
-    height: 3rem;
-    right: 0.25rem;
-    top: 0.25rem;
-    background-color: #7c3aed;
-    border-radius: 50%;
-    filter: blur(20px);
-   }
-   
-   .custom-button::after {
-    width: 5rem;
-    height: 5rem;
-    right: 2rem;
-    top: 0.75rem;
-    background-color: #f43f5e;
-    border-radius: 50%;
-    filter: blur(20px);
-   }
    

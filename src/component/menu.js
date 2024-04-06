@@ -14,11 +14,17 @@ const Menu = () => {
   }
 
   React.useEffect(() => {
+    if(chat){
+      setMenuOpen(false);
+    }
+    else{
+      setMenuOpen(true);
+    }
     if (wrapper) {
       if (menuOpen) wrapper.classList.add("opened-nav");
       else wrapper.classList.remove("opened-nav");
     }
-  }, [menuOpen]);
+  }, [menuOpen,chat]);
 
   const takeScreenshot = async () => {
     try {
@@ -36,6 +42,7 @@ const Menu = () => {
 
   return (
     <div className="container csstransforms ">
+        <div style={{justifyItems: "flex-row"}}>
       <div className="component">
         <button className="cn-button" onClick={toggleMenu} id="cn-button">
           Menu
@@ -70,8 +77,9 @@ const Menu = () => {
             </li>
           </ul>
         </div>
-      </div>
+        </div>
       {chat && <Chat />}
+      </div>
     </div>
   );
 };
