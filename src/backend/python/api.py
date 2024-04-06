@@ -1,7 +1,7 @@
 import speech_recognition as sr
 from gtts import gTTS
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 app = Flask(__name__)
 
 @app.route('/recognize', methods=['POST'])
@@ -34,10 +34,13 @@ def text_to_speech(text, lang='en'):
 
 @app.route('/speech', methods=['POST'])
 def main():
-    text = input("Enter the text to convert to speech: ")
-    filename = text_to_speech(text)
-    print(f"Text converted to speech. Saved as '{filename}'")
-    return os.system(f"start {filename}")
+    if 'text' in request.form:
+        text = request.form['text']
+        filename = text_to_speech(text)
+        print(f"Text converted to speech. Saved as '{filename}'")
+        return send_file(filename, as_attachment=True)
+    else:
+        return "Text not provided in the request."
     
 if (__name__ == "__main__"):
     app.run(port=5000)
