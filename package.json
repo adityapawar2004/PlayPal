@@ -37,15 +37,17 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@google/generative-ai": "^0.5.0",
     "@mantine/core": "^7.7.1",
     "@mantine/hooks": "^7.7.1",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-squirrel-startup": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-radial-menu": "^1.0.0",
-    "systeminformation": "^5.22.7",
-    "screenshot-desktop": "^1.15.0"
+    "screenshot-desktop": "^1.15.0",
+    "systeminformation": "^5.22.7"
   }
 }

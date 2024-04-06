@@ -7,6 +7,8 @@ function ScreenShot() {
       // Assuming "capture-screen" is the channel you're using
       const response = await window.electron.captureScreen();
       console.log(response);
+      const genAiResponse = await window.electron.genAiScreenshotOnly(response);
+      console.log(genAiResponse);
       setFilePath(response); // Make sure response is the path or error message
     } catch (error) {
       console.error("Failed to capture screen:", error);
