@@ -54,27 +54,22 @@ const Menu = () => {
         <div className="cn-wrapper" id="cn-wrapper">
           <ul>
             <li>
-              <a href="#">
-                <span>Home</span>
-              </a>
-            </li>
-            <li>
               <a href="#" onClick={takeScreenshot}>
-                <span>
+                <span style={{ fontSize: "24px" }}>
                   <FaCameraRetro />
                 </span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span>
-                  <FaCameraRetro />
+                <span style={{ fontSize: "24px" }}>
+                  <MdRecordVoiceOver />
                 </span>
               </a>
             </li>
             <li>
               <a href="#" onClick={() => {setChat(!chat); setMenuOpen(false)}}>
-                <span>
+                <span style={{ fontSize: "24px" }}>
                   <IoChatboxEllipses />
                 </span>
               </a>
