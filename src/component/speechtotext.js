@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const { webkitSpeechRecognition } = window;
-const recognition = new webkitSpeechRecognition();
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
 
 const SpeechtoText = () => {
   const [transcript, setTranscript] = useState('');
@@ -11,15 +11,20 @@ const SpeechtoText = () => {
   recognition.lang = 'en-US';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
+  recognition.continuous = true; // Ensure continuous recognition
 
   recognition.onresult = (event) => {
     const result = event.results[0][0].transcript;
     setTranscript(result);
-    console.log(result); 
+  };
+
+  recognition.onerror = (event) => {
+    console.error('Speech recognition error:', event);
+    alert('Speech recognition encountered an error. Please try again.',event);
+    stopListening();
   };
 
   const startListening = () => {
-    setIsListening(true);
     if (!permissionGranted) {
       navigator.mediaDevices.getUserMedia({ audio: true })
         .then(() => {
@@ -33,6 +38,7 @@ const SpeechtoText = () => {
     } else {
       recognition.start();
     }
+    setIsListening(true);
   };
 
   const stopListening = () => {
@@ -42,7 +48,7 @@ const SpeechtoText = () => {
 
   return (
     <div>
-      <button onClick={isListening ? stopListening : startListening}>
+      <button onClick={isListening ? stopListening : startListening} disabled={isListening}>
         {isListening ? 'Stop Listening' : 'Start Listening'}
       </button>
       <p>{transcript}</p>
