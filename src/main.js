@@ -31,16 +31,17 @@ const createMainWindow = () => {
 
 const createTransparentWindow = () => {
   const transparentWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    maxwidth: 800,
-    maxheight: 600,
-    minwidth: 800,
-    minheight: 600,
+    width: 654,
+    height: 460,
+    maxwidth: 654,
+    maxheight: 460,
+    // minwidth: 800,
+    // minheight: 600,
     frame: false,
     transparent: true,
+    fullscreenable: false,
+    resizable: false,
     autoHideMenuBar: true,
-
     alwaysOnTop: true,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,

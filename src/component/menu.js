@@ -8,7 +8,11 @@ const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [filePath, setFilePath] = useState([]);
   const [chat, setChat] = useState(false);
+  const [showResponse, setShowResponse] = useState(false);
+  const [aiResponse, setAiResponse] = useState("");
+
   const wrapper = document.getElementById("cn-wrapper");
+
   function toggleMenu() {
     setMenuOpen(!menuOpen);
   }
@@ -22,7 +26,6 @@ const Menu = () => {
 
   const takeScreenshot = async () => {
     try {
-      // Assuming "capture-screen" is the channel you're using
       const response = await window.electron.captureScreen();
       console.log(response);
       const GameName = localStorage.getItem("GameName");
@@ -31,16 +34,19 @@ const Menu = () => {
         GameName
       );
       console.log(genAiResponse);
-      setFilePath(response); // Make sure response is the path or error message
+      setFilePath(response);
+      setAiResponse(genAiResponse);
+      setShowResponse(true); // Show the AI response box
     } catch (error) {
       console.error("Failed to capture screen:", error);
       setFilePath("Failed to capture screen");
+      setAiResponse("Failed to get AI response");
+      setShowResponse(true);
     }
   };
 
   return (
-    <div className="container csstransforms ">
-        <div style={{justifyItems: "flex-row"}}>
+    <div className="container csstransforms">
       <div className="component">
         <button className="cn-button" onClick={toggleMenu} id="cn-button">
           Menu
@@ -75,8 +81,28 @@ const Menu = () => {
             </li>
           </ul>
         </div>
-        </div>
-      {chat && <Chat setMenuOpen={setMenuOpen} setChat = {setChat} />}
+        {chat && <Chat setMenuOpen={setMenuOpen} setChat={setChat} />}
+        {showResponse && (
+          <div
+            style={{
+              backgroundColor: "#fff",
+              color: "#333",
+              padding: "20px",
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: "1000",
+              width: "80%",
+              textAlign: "center",
+              borderRadius: "10px",
+              boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            }}
+          >
+            <p>{aiResponse}</p>
+            <button onClick={() => setShowResponse(false)}>Close</button>
+          </div>
+        )}
       </div>
     </div>
   );
