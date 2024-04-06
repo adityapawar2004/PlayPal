@@ -1,6 +1,7 @@
 import React from "react";
 import ScreenShot from "./component/ScreenShot";
 import Menu from "./component/menu";
+import SpeechtoText from "./component/speechtotext";
 
 function App() {
   const params = new URLSearchParams(window.location.search);
@@ -17,6 +18,7 @@ function MainComponents() {
   return (
     <div>
       <ScreenShot />
+      <SpeechtoText/>
     </div>
   );
 }
