@@ -40,7 +40,7 @@ const createTransparentWindow = () => {
     frame: false,
     transparent: true,
     autoHideMenuBar: true,
-  
+
     alwaysOnTop: true,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -69,8 +69,8 @@ app.on("window-all-closed", () => {
   }
 });
 
-const handleScreenshotOnly = async (event, filepath) => {
-  const res = await screenshotOnly(filepath);
+const handleScreenshotOnly = async (event, filepath, searchValue) => {
+  const res = await screenshotOnly(filepath, searchValue);
   return res;
 };
 

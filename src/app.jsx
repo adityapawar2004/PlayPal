@@ -1,39 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
+import ScreenShot from "./component/ScreenShot";
 import Menu from "./component/menu";
 
-function App() {
-  const params = new URLSearchParams(window.location.search);
-  const windowType = params.get("window");
 
-  return (
-    <div>
-      {windowType === "main" ? <MainComponents /> : <TransparentComponents />}
-    </div>
-  );
-}
 
-function MainComponents() {
+function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
   const [apiValue, setApiValue] = useState('');
   const [apiKey, setApiKey] = useState('');
   const [isApiSaved, setIsApiSaved] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
   const handleInputChange = (event) => {
     setSearchValue(event.target.value);
-    setIsSaved(false); 
+    setIsSaved(false);
   };
 
   const handleSaveClick = () => {
-
-    console.log('Saved:', searchValue);
-
-    setIsSaved(true); 
-
-    setTimeout(() => {
-      setIsSaved(false);
-      setSearchValue('');
-    }, 1000);
+    console.log("Saved:", searchValue);
+    localStorage.setItem("GameName", searchValue);
+    setIsSaved(true);
   };
   const handleInputApi = (event) => {
     setApiValue(event.target.value);
@@ -94,6 +78,28 @@ function MainComponents() {
 
 function TransparentComponents() {
   return <Menu />;
+}
+
+function App() {
+  const params = new URLSearchParams(window.location.search);
+  const windowType = params.get("window");
+  const [searchValue, setSearchValue] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
+  console.log(searchValue);
+  return (
+    <div>
+      {windowType === "main" ? (
+        <MainComponents
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          isSaved={isSaved}
+          setIsSaved={setIsSaved}
+        />
+      ) : (
+        <TransparentComponents />
+      )}
+    </div>
+  );
 }
 
 export default App;
