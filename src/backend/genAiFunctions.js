@@ -17,14 +17,13 @@ function fileToGenerativePart(fileName, mimeType) {
   };
 }
 
-async function screenshotOnly(filePath) {
+async function screenshotOnly(filePath, searchValue) {
   console.log("aiFunction" + JSON.stringify(filePath));
   console.log(process.env.API_KEY);
   // For text-and-image input (multimodal), use the gemini-pro-vision model
   const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
-  const prompt =
-    " I am  playing minecraft and the image attached shows what's currently on my screen. Based on this,what should I do";
+  const prompt = ` I am  playing ${searchValue} and the image attached shows what's currently on my screen. Based on this,what should I do`;
 
   const imageParts = [fileToGenerativePart(filePath, "image/png")];
 
