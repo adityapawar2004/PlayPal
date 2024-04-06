@@ -12,6 +12,8 @@ The Game Companion App is a tool designed to enhance your gaming experience by p
 
 - **NodeJS**: Integrating backend with NodeJS.
 
+- **Python**: Python for Text to Speech API calls.
+
 ## Features
 
 - **Real-time Guidance**: Receive instant guidance and suggestions on the next steps to take in your game, tailored to your current progress and gameplay style.
