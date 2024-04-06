@@ -46,7 +46,7 @@ function MainComponents() {
         value={searchValue}
         onChange={handleInputChange}
         placeholder="Enter your search..."
-        style={{outline:"none",border:"none",fontSize:"15px",color:"white",background:"none"}}
+        style={{outline:"none",border:"none",fontSize:"15px",color:"white",background:"none",width:"100%"}}
       /></div>
       <button className="custom-button" onClick={handleSaveClick}>{isSaved ? 'Saved' : 'Save'}</button>
     </div>
