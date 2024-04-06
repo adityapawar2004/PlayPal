@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Menu from './menu';
 
 
-const Chat = ({setMenuOpen}) => {
+const Chat = ({setMenuOpen, setChat}) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
 
@@ -11,6 +11,7 @@ const Chat = ({setMenuOpen}) => {
       setMessages([...messages, { text: inputMessage, sender: 'user' }]);
       setInputMessage('');
       // return the Menu component
+      setChat(false);
     }
     setMenuOpen(true);
   };

@@ -14,12 +14,11 @@ const Menu = () => {
   }
 
   useEffect(() => {
-    // setChat(!chat)
     if (wrapper) {
       if (menuOpen) wrapper.classList.add("opened-nav");
       else wrapper.classList.remove("opened-nav");
     }
-  }, [menuOpen,chat]);
+  }, [menuOpen]);
 
   const takeScreenshot = async () => {
     try {
@@ -68,7 +67,7 @@ const Menu = () => {
               </a>
             </li>
             <li>
-              <a href="#" onClick={() => setChat(!chat)}>
+              <a href="#" onClick={() => {setChat(!chat); setMenuOpen(false)}}>
                 <span>
                   <IoChatboxEllipses />
                 </span>
@@ -77,7 +76,7 @@ const Menu = () => {
           </ul>
         </div>
         </div>
-      {chat && <Chat setMenuOpen={setMenuOpen} />}
+      {chat && <Chat setMenuOpen={setMenuOpen} setChat = {setChat} />}
       </div>
     </div>
   );
