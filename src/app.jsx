@@ -28,6 +28,7 @@ function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
     console.log('Saved:', apiValue);
     setApiKey(apiValue);
     setIsApiSaved(true);
+    localStorage.setItem("GameName", apiValue);
   };
  
 
