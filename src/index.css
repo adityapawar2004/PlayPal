@@ -26,20 +26,6 @@ html {
     font-family: 'Lato', Arial, sans-serif;
 }
 
-.component > h2 {
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    white-space: nowrap;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 12em;
-    opacity: 0.1;
-    cursor: default;
-}
-
 .cn-button {
     position: absolute;
     top: 100%;
