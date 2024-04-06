@@ -1,2 +1,7 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld("electron", {
+  captureScreen: async () => await ipcRenderer.invoke("capture-screen"),
+  genAiScreenshotOnly: async (filepath) =>
+    await ipcRenderer.invoke("genAi-screenshot-only", filepath),
+});
