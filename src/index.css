@@ -11,9 +11,12 @@
 html,
 body {
     height: 100%;
+   
 }
 
-
+.container {
+    -webkit-app-region: drag;
+}
 
 .component {
     position: relative;
@@ -82,7 +85,7 @@ body {
     transform: scale(0.1);
     pointer-events: none;
     overflow: hidden;
-    rotate: 90deg;
+    rotate: 150deg;
 }
 
 /*cover to prevent extra space of anchors from being clickable*/

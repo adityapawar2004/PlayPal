@@ -38,10 +38,10 @@ const Menu= () => {
     };
 
     return (
-      <div className="container csstransforms">
+      <div className='container csstransforms '>
         <div className="component">
         
-          <button className="cn-button" onClick={toggleMenu} id="cn-button">Menu</button>
+          <button className="cn-button"  onClick={toggleMenu} id="cn-button">Menu</button>
           <div className="cn-wrapper" id="cn-wrapper">
             <ul>
               <li>
