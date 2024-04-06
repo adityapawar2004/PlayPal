@@ -15,7 +15,7 @@ const TextToSpeech = ({text}) => {
         console.error('Error converting text to speech:', error);
       }
     };
-  
+
     return (
       <div>
         {audioUrl && <audio controls src={audioUrl} autoPlay/>}
