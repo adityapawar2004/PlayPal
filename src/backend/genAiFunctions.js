@@ -2,10 +2,20 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 require("dotenv").config({ path: "./.env.local" }); // Specify the correct path to your .env file
 
-// Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
-const path = require("path");
+let apiKey;
+
+if (process.env.NODE_ENV === "production") {
+    // Assuming this code is in the main process, you should use an alternative to localStorage.
+    // You might use Electron's app.getPath to determine a safe place to store and retrieve sensitive data.
+    const Store = require('electron-store');
+    const store = new Store();
+    apiKey = store.get('ApiKey'); // Ensure you set this key somewhere secure in production
+} else {
+    apiKey = process.env.API_KEY;
+}
+
+const genAI = new GoogleGenerativeAI(apiKey);
 
 function fileToGenerativePart(fileName, mimeType) {
   const absolutePath = fileName;

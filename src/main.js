@@ -14,6 +14,16 @@ const screenshotOnly = require("./backend/genAiFunctions");
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
+// In a file accessible by the main process, e.g., main.js
+const Store = require('electron-store');
+const store = new Store();
+
+// IPC handler to set the API key
+ipcMain.handle('set-api-key', (event, apiKey) => {
+    store.set('ApiKey', apiKey);
+    return true;  // Acknowledge that the key was set
+});
+
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({

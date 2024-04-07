@@ -51,13 +51,13 @@ const Menu = () => {
         </button>
         <div className="cn-wrapper" id="cn-wrapper">
           <ul>
-            <li>
+            {/* <li>
               <a href="#">
                 <span style={{ fontSize: "24px" }}>
                   <MdRecordVoiceOver />
                 </span>
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="#" onClick={takeScreenshot}>
                 <span style={{ fontSize: "24px" }}>
