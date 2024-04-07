@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdRecordVoiceOver } from "react-icons/md";
-import { FaCameraRetro, FaSpinner } from "react-icons/fa";  // Import FaSpinner for the loading icon
+import { FaCameraRetro, FaSpinner } from "react-icons/fa"; // Import FaSpinner for the loading icon
 import { IoChatboxEllipses } from "react-icons/io5";
 import Chat from "./chat";
 import TextToSpeech from "./texttospeech";
@@ -11,7 +11,7 @@ const Menu = () => {
   const [chat, setChat] = useState(false);
   const [showResponse, setShowResponse] = useState(false);
   const [aiResponse, setAiResponse] = useState("");
-  const [isLoading, setIsLoading] = useState(false);  // State to track loading
+  const [isLoading, setIsLoading] = useState(false); // State to track loading
 
   const wrapper = document.getElementById("cn-wrapper");
 
@@ -27,11 +27,14 @@ const Menu = () => {
   }, [menuOpen]);
 
   const takeScreenshot = async () => {
-    setIsLoading(true);  // Start loading
+    setIsLoading(true); // Start loading
     try {
       const response = await window.electron.captureScreen();
       const GameName = localStorage.getItem("GameName");
-      const genAiResponse = await window.electron.genAiScreenshotOnly(response, GameName);
+      const genAiResponse = await window.electron.genAiScreenshotOnly(
+        response,
+        GameName
+      );
       setFilePath(response);
       setAiResponse(genAiResponse);
       setShowResponse(true); // Show the AI response box
@@ -41,7 +44,7 @@ const Menu = () => {
       setAiResponse("Failed to get AI response");
       setShowResponse(true);
     }
-    setIsLoading(false);  // End loading
+    setIsLoading(false); // End loading
   };
 
   const convertTextToSpeech = async () => {
@@ -81,13 +84,22 @@ const Menu = () => {
             <li>
               <a href="#" onClick={takeScreenshot}>
                 <span style={{ fontSize: "24px" }}>
-                  {isLoading ? <FaSpinner className="fa-spin" /> : <FaCameraRetro />}
+                  {isLoading ? (
+                    <FaSpinner className="fa-spin" />
+                  ) : (
+                    <FaCameraRetro />
+                  )}
                 </span>
               </a>
             </li>
             <li>
-
-              <a href="#" onClick={() => {setChat(!chat); setMenuOpen(false)}}>
+              <a
+                href="#"
+                onClick={() => {
+                  setChat(!chat);
+                  setMenuOpen(false);
+                }}
+              >
                 <span style={{ fontSize: "24px" }}>
                   <IoChatboxEllipses />
                 </span>
@@ -95,7 +107,15 @@ const Menu = () => {
             </li>
           </ul>
         </div>
-        {chat && <Chat setMenuOpen={setMenuOpen} setChat={setChat} />}
+        {chat && (
+          <Chat
+            setMenuOpen={setMenuOpen}
+            setChat={setChat}
+            setAiResponse={setAiResponse}
+            setIsLoading={setIsLoading}
+            setShowResponse={setShowResponse}
+          />
+        )}
         {showResponse && (
           <div
             style={{
