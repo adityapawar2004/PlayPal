@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Menu from './menu';
+import TextToSpeech from './texttospeech';
 
 
 const Chat = ({setMenuOpen, setChat}) => {
@@ -17,7 +18,7 @@ const Chat = ({setMenuOpen, setChat}) => {
   };
 
   return (
-    <div style={{ width: "350px", backgroundColor: "rgba(5, 11, 57, 0.933)", margin: "auto", marginTop: "40px", borderRadius: "10px", padding: "10px", boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}>
+    <div style={{ width: "350px", backgroundColor: "rgba(5, 11, 57, 0.933)", margin: "auto",position:"relative", top:"50px", borderRadius: "10px", padding: "10px", boxShadow: "0 0 10px rgba(0,0,0,0.2)",  }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems:"center" }}>
         <input
           type="text"

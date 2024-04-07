@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const TextToSpeech = ({text}) => {
+const TextToSpeech = ({message}) => {
     const [audioUrl, setAudioUrl] = useState('');
 
     useEffect(  () => {
         convertTextToSpeech();
-    }, [text])
+    }, [message])
 
     const convertTextToSpeech = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/speech', { text });
+        const response = await axios.post('http://localhost:5000/speech', { message });
+        console.log(response)
         setAudioUrl(response.data.audioUrl);
       } catch (error) {
         console.error('Error converting text to speech:', error);
