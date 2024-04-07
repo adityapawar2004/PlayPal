@@ -49,25 +49,26 @@ const Menu = () => {
 
   const convertTextToSpeech = async () => {
     try {
-      if (aiResponse.length >= 0) {
-        const response = await axios.post('http://localhost:5000/speech', { message: aiResponse });
-        console.log(response)
+      if (aiResponse) { // Check if aiResponse is not null or empty
+        const response = await axios.post('http://localhost:5000/speech', { text: aiResponse });
+        console.log(response);
         // setAudioUrl(response.data.audioUrl);
       }
     } catch (error) {
       console.error('Error converting text to speech:', error);
     }
   };
-
+  
   useEffect(() => {
-    convertTextToSpeech()
-  }, [aiResponse])
+    convertTextToSpeech();
+  }, [aiResponse]);
+  
 
 
 
   return (
     <div className="container csstransforms">
-      <TextToSpeech message={genAiResponse} />
+      <TextToSpeech message={aiResponse} />
       <div className="component">
         <button className="cn-button" onClick={toggleMenu} id="cn-button">
           Menu

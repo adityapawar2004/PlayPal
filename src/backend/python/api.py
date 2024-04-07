@@ -11,7 +11,7 @@ def recognize_from_microphone():
         print("Calibrating microphone...")
         recognizer.adjust_for_ambient_noise(source, duration=1)
         print("Microphone calibrated. Start speaking.")
-    
+
         try:
             audio = recognizer.listen(source, timeout=5)  # Adjust timeout as needed
             print("Processing audio...")
@@ -34,8 +34,9 @@ def text_to_speech(text, lang='en'):
 
 @app.route('/speech', methods=['POST'])
 def main():
-    if 'text' in request.form:
-        text = request.form['text']
+    data = request.get_json()  # Retrieve JSON data
+    if 'text' in data:
+        text = data['text']
         filename = text_to_speech(text)
         print(f"Text converted to speech. Saved as '{filename}'")
         return send_file(filename, as_attachment=True)

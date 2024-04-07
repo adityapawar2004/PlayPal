@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Menu from './menu';
 import TextToSpeech from './texttospeech';
 
+
 const Chat = ({
   setMenuOpen,
   setChat,
