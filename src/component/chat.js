@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import Menu from './menu';
 import TextToSpeech from './texttospeech';
 
-import React, { useState } from "react";
-import Menu from "./menu";
-
 const Chat = ({
   setMenuOpen,
   setChat,
