@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-// import ScreenShot from "./component/ScreenShot";
 import Menu from "./component/menu";
 
 function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
   const [apiValue, setApiValue] = useState("");
-  const [apiKey, setApiKey] = useState("");
   const [isApiSaved, setIsApiSaved] = useState(false);
   const handleInputChange = (event) => {
     setSearchValue(event.target.value);
@@ -22,11 +20,10 @@ function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
     setIsApiSaved(false);
   };
 
-  const handleSaveApi = () => {
+  const handleSaveApi = async () => {
     console.log("Saved:", apiValue);
-    const resElectronStore = window.electronAPI.setApiKey(apiValue);
+    const resElectronStore = await window.electron.setApiKey(apiValue);
     console.log(resElectronStore);
-    setApiKey(apiValue);
     setIsApiSaved(true);
     localStorage.setItem("ApiKey", apiValue);
   };
@@ -142,7 +139,7 @@ function MainComponents({ searchValue, setSearchValue, isSaved, setIsSaved }) {
                 type="text"
                 value={searchValue}
                 onChange={handleInputChange}
-                placeholder="Enter your search..."
+                placeholder="Enter your game name"
                 style={{
                   outline: "none",
                   border: "none",
