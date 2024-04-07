@@ -3,6 +3,7 @@ import { MdRecordVoiceOver } from "react-icons/md";
 import { FaCameraRetro, FaSpinner } from "react-icons/fa"; // Import FaSpinner for the loading icon
 import { IoChatboxEllipses } from "react-icons/io5";
 import Chat from "./chat";
+import TextToSpeech from "./texttospeech";
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,8 +47,27 @@ const Menu = () => {
     setIsLoading(false); // End loading
   };
 
+  const convertTextToSpeech = async () => {
+    try {
+      if (aiResponse.length >= 0) {
+        const response = await axios.post('http://localhost:5000/speech', { message: aiResponse });
+        console.log(response)
+        // setAudioUrl(response.data.audioUrl);
+      }
+    } catch (error) {
+      console.error('Error converting text to speech:', error);
+    }
+  };
+
+  useEffect(() => {
+    convertTextToSpeech()
+  }, [aiResponse])
+
+
+
   return (
     <div className="container csstransforms">
+      <TextToSpeech message={genAiResponse} />
       <div className="component">
         <button className="cn-button" onClick={toggleMenu} id="cn-button">
           Menu
