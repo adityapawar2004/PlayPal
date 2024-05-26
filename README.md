@@ -1,4 +1,4 @@
-# Game Companion App
+# PlayPal : a Game Companion App
 
 The Game Companion App is a tool designed to enhance your gaming experience by providing real-time guidance, suggestions, and voice assistance tailored to your gameplay. With the ability to analyze in-game screenshots, the app offers personalized tips and strategies to help you progress through the game and achieve success !!
 
