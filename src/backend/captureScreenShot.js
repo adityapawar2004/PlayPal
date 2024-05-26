@@ -11,7 +11,13 @@ async function captureScreen() {
 
     // Use a timestamp to create a unique filename for each screenshot
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const filePath = path.join(screenshotsDir, `screenshot-${timestamp}.png`);
+    const filePath =
+      app.isPackaged && process.env.NODE_ENV === "production"
+        ? path.join(
+            app.getPath("userData"),
+            `screenshots/screenshot-${timestamp}.png`
+          )
+        : path.join(screenshotsDir, `screenshot-${timestamp}.png`);
 
     // Use screenshot-desktop to capture the screen
     await screenshot({ filename: filePath });
